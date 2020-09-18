@@ -1,0 +1,99 @@
+<html>
+
+<head>
+  <title>Register Page</title>
+</head>
+
+<style>
+  body {
+    width: 100%;
+    background-color: silver;
+    font-family: verdana;
+    text-align: center;
+  }
+
+  form {
+    margin: auto;
+    display: table;
+    text-align: left;
+  }
+
+  .row {
+    display: table-row;
+  }
+
+  input {
+    display: table-cell;
+  }
+
+  label {
+    display: table-cell;
+    padding-right: 10px;
+  }
+</style>
+
+<body>
+
+  <h2>Register</h2>
+
+
+  <form name="form1" action="login1.html" method="post">
+    <p class="row">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </p>
+    <p class="row">
+      <label>Password</label>
+      <input type="password" name="password" required>
+    </p>
+    <p class="row">
+      <label>Confirm Password</label>
+      <input type="password" name="password2" required>
+    </p>
+
+    <br />
+    <p class="row">
+      <input type="submit" name="submit" value="Submit">
+      <label>Already a User? <a href="login1.html">Login</a></label>
+    </p>
+  </form>
+
+</body>
+
+<script type="text/javascript">
+  let password = document.form1.password;
+  let password2 = document.form1.password2;
+
+  password.addEventListener("input", function(e) {
+    // console.log("Here");
+    if (validPassword()) {
+      password.setCustomValidity("");
+    } else {
+      password.setCustomValidity("Password should be between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character");
+    }
+  })
+
+  password2.addEventListener("input", function(e) {
+    if (bothValid()) {
+      password2.setCustomValidity("");
+    } else {
+      password2.setCustomValidity("Passwords do not match!");
+    }
+  })
+
+  function validPassword() {
+
+    let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    let pass = password.value;
+    // console.log(pass);
+    return pass.match(regex);
+  }
+
+  function bothValid() {
+    let pass = password.value;
+    let pass2 = password2.value;
+    return pass === pass2;
+  }
+</script>
+
+</html>

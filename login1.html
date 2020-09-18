@@ -1,0 +1,95 @@
+<html>
+
+<head>
+  <title>login</title>
+</head>
+
+<style>
+<style>
+body {
+ <body style="background-image:url(https://www.avanade.com/-/media/images/blogs/avanade-insights/will-banks-lose-their-monopoly-to-fintechs.jpg?la=en&ver=1);
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+  body {
+    width: 100%;
+    background-color: silver;
+    font-family: verdana;
+    text-align: center;
+  }
+
+  h2 {
+    color: blue;
+  }
+
+  p {
+    color: black;
+  }
+
+  form {
+    margin: auto;
+    display: table;
+    text-align: left;
+  }
+
+  .row {
+    display: table-row;
+  }
+
+  input {
+    display: table-cell;
+  }
+
+  label {
+    display: table-cell;
+    padding-right: 10px;
+  }
+</style>
+
+<body>
+
+  <h1 style="color:indigo;font-size:40px;">BUSINESS BANK</h1>
+  <h4>Login Here</h4>
+
+  <form name="form1" action="BUSINESSBANK.html" method="post">
+    <p class="row">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </p>
+    <p class="row">
+      <label>Password</label>
+      <input type="password" name="password" required>
+    </p>
+    <br />
+    <p class="row">
+      <input type="submit" name="submit" value="Submit">
+      <label>Not a member? <a href="register.html">Register</a></label>
+    </p>
+
+  </form>
+
+</body>
+
+<script type="text/javascript">
+  let password = document.form1.password;
+
+  password.addEventListener("input", function(e) {
+    if (validPassword()) {
+      password.setCustomValidity("");
+    } else {
+      password.setCustomValidity("Password should be between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character");
+    }
+  })
+
+  function validPassword() {
+
+    let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+    let pass = password.value;
+    // console.log(pass);
+    return pass.match(regex);
+  }
+</script>
+
+</html>
